@@ -14,8 +14,8 @@ import (
     "sync"
     "time"
 
-    "github.com/lucas-clemente/quic-go"
-    "github.com/lucas-clemente/quic-go/http3"
+    "github.com/quic-go/quic-go"
+    "github.com/quic-go/quic-go/http3"
 
     "inet.af/netaddr"
 )
@@ -192,7 +192,7 @@ func (c *HttpClient) createClient(ip *netaddr.IP) *internalClient {
                 if err != nil {
                     return nil, err
                 }
-                return quic.DialEarly(udpConn, remoteAddr, addr, tlsCfg, cfg)
+                return quic.DialEarly(ctx, udpConn, remoteAddr, tlsCfg, cfg)
             }
         }
         rt = t
